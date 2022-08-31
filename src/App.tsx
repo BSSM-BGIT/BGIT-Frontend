@@ -1,13 +1,13 @@
 import React from 'react';
-import './App.css';
+import './style.scss';
 import {BrowserRouter, Route, Routes} from "react-router-dom"
-import Home from './components/Home';
-import Bojrank from './components/Bojrank';
-import Share from './components/Share';
-import Notfound from './components/Notfound';
+import Home from './pages/Home';
+import Bojrank from './pages/Bojrank';
+import Share from './pages/Share';
+import Notfound from './pages/Notfound';
 import { ErrorBoundary } from 'react-error-boundary';
-import Error from './components/Error';
-import Login from './components/Login';
+import Error from './pages/Error';
+import Login from './pages/Login';
 
 function App() {
   return (
