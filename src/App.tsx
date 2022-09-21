@@ -8,21 +8,25 @@ import Notfound from './pages/Notfound';
 import { ErrorBoundary } from 'react-error-boundary';
 import Error from './pages/Error';
 import Login from './pages/Login';
+import BsmOAuth from './pages/oauth/Bsm';
+import { RecoilRoot } from 'recoil';
 
 function App() {
   return (
     <div className="App">
-      <ErrorBoundary FallbackComponent={Error}>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/bojrank' element={<Bojrank />}></Route>
-            <Route path='/share' element={<Share />}></Route>
-            <Route path='/login' element={<Login />}></Route>
-            <Route element={<Notfound />}></Route>
-          </Routes>
-        </BrowserRouter>
-      </ErrorBoundary>
+      <RecoilRoot>
+        <ErrorBoundary FallbackComponent={Error}>
+          <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Home />}></Route>
+                <Route path='/bojrank' element={<Bojrank />}></Route>
+                <Route path='/share' element={<Share />}></Route>
+                <Route path='/oauth/bsm' element={<BsmOAuth />}></Route>
+                <Route element={<Notfound />}></Route>
+            </Routes>
+          </BrowserRouter>
+        </ErrorBoundary>
+      </RecoilRoot>
     </div>
   );
 }
