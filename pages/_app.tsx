@@ -7,6 +7,7 @@ import Toast from '../components/common/overlay/toast'
 import Alert from '../components/common/overlay/alert'
 import { LoginBox } from '../components/common/accountPopup'
 import { SettingBox } from '../components/common/settingPopup'
+import { Header } from '../components/common/header'
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <RecoilRoot>
                 <Component {...pageProps} />
                 <>
+                    <Header />
                     <LoginBox />
                     <SettingBox />
                     <Toast />

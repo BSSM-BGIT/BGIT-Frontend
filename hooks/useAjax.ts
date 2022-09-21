@@ -56,40 +56,42 @@ export const useAjax = () => {
             })();
             loading(false);
             return [rawRes.data, false];
-        } catch (error) {
-            if (error instanceof AxiosError) {
-                if (error.response?.status === 401) {
-                    if (!(token?.refreshToken)) {
-                        loginAlert();
-                        return [, error];
-                    }
-                    const [newToken, newTokenError] = await ajax<Token>({
-                        method: HttpMethod.PUT,
-                        url: 'refresh',
-                        headers: {
-                            'REFRESH-TOKEN': token.refreshToken
-                        },
-                        noToken: true
-                    });
-                    if (newTokenError || !newToken) {
-                        loginAlert();
-                        return [, newTokenError];
-                    }
-                    setToken(prev => ({
-                        ...prev,
-                        accessToken: newToken.accessToken
-                    }));
-                    return ajax({
-                        url,
-                        method,
-                        payload,
-                        headers: {...headers, 'ACCESS-TOKEN': newToken.accessToken},
-                        noToken: true
-                    });
+        } catch (err) {
+            loading(false);
+            if (!(err instanceof AxiosError) || !err.response) {
+                console.log(err);
+                showAlert('알 수 없는 에러가 발생하였습니다');
+                return [, true];
+            };
+
+            if (err.response?.status === 401) {
+                if (!(token?.refreshToken)) {
+                    loginAlert();
+                    return [, err];
                 }
-                loading(false);
-                resetUser();
-                return [, error];
+                const [newToken, newTokenError] = await ajax<Token>({
+                    method: HttpMethod.PUT,
+                    url: 'refresh',
+                    headers: {
+                        'REFRESH-TOKEN': token.refreshToken
+                    },
+                    noToken: true
+                });
+                if (newTokenError || !newToken) {
+                    loginAlert();
+                    return [, newTokenError];
+                }
+                setToken(prev => ({
+                    ...prev,
+                    accessToken: newToken.accessToken
+                }));
+                return ajax({
+                    url,
+                    method,
+                    payload,
+                    headers: {...headers, 'ACCESS-TOKEN': newToken.accessToken},
+                    noToken: true
+                });
             }
             loading(false);
             return [, true];
