@@ -1,20 +1,12 @@
 import { atom } from "recoil";
+import { UserType } from "../types/user.type";
 import { localStorageEffect } from "../utils/localStorage";
 
-export interface User {
-    isLogin: boolean,
-    email: string,
-    studentGrade: number,
-    studentClassNo: number,
-    studentNo: number,
-    name: string,
-    githubId: null | string,
-    commits: number,
-    bio: null | string,
-    img: null | string
+interface UserState extends UserType {
+    isLogin: boolean
 }
 
-export const userState = atom<User>({
+export const userState = atom<UserState>({
     key: 'user',
     default: {
         isLogin: false,

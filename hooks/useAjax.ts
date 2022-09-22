@@ -5,7 +5,7 @@ import { useModal } from "./useModal";
 import { useOverlay } from "./useOverlay";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: 'http://52.79.57.84:8080',
     headers: {
         Pragma: 'no-cache'
     },
@@ -39,7 +39,7 @@ export const useAjax = () => {
         payload,
         headers = {},
         noToken
-    }: Ajax):Promise<[T | void, AxiosError | boolean]> => {
+    }: Ajax):Promise<[T, false] | [void, AxiosError | true]> => {
         loading(true);
         if (!noToken) {
             headers['ACCESS-TOKEN'] = token.accessToken;
@@ -58,7 +58,7 @@ export const useAjax = () => {
             return [rawRes.data, false];
         } catch (err) {
             loading(false);
-            if (!(err instanceof AxiosError) || !err.response) {
+            if (!(err instanceof AxiosError) || !err.response?.status) {
                 console.log(err);
                 showAlert('알 수 없는 에러가 발생하였습니다');
                 return [, true];
@@ -77,7 +77,7 @@ export const useAjax = () => {
                     },
                     noToken: true
                 });
-                if (newTokenError || !newToken) {
+                if (newTokenError) {
                     loginAlert();
                     return [, newTokenError];
                 }
@@ -92,6 +92,10 @@ export const useAjax = () => {
                     headers: {...headers, 'ACCESS-TOKEN': newToken.accessToken},
                     noToken: true
                 });
+            }
+
+            if (err.response.data?.message) {
+                showAlert(err.response.data?.message);
             }
             loading(false);
             return [, true];

@@ -3,10 +3,13 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { HttpMethod, useAjax } from '../../hooks/useAjax';
-import { Token, tokenState, User, userState } from '../../store/user.store';
+import { useOverlay } from '../../hooks/useOverlay';
+import { Token, tokenState, userState } from '../../store/user.store';
+import { UserType } from '../../types/user.type';
 
 const BsmOAuth: NextPage = () => {
     const { ajax } = useAjax();
+    const { showAlert, showToast } = useOverlay();
     const [, setUser] = useRecoilState(userState);
     const [, setToken] = useRecoilState(tokenState);
     const router = useRouter();
@@ -23,14 +26,14 @@ const BsmOAuth: NextPage = () => {
                 },
                 noToken: true
             });
-            if (tokenError || !token) {
+            if (tokenError) {
                 console.log(tokenError);
-                alert('알 수 없는 에러가 발생하였습니다');
+                showAlert('알 수 없는 에러가 발생하였습니다');
                 return;
             }
             setToken(token);
 
-            const [userInfo, userInfoError] = await ajax<User>({
+            const [userInfo, userInfoError] = await ajax<UserType>({
                 method: HttpMethod.GET,
                 url: 'user',
                 headers: {
@@ -38,12 +41,16 @@ const BsmOAuth: NextPage = () => {
                 },
                 noToken: true
             });
-            if (userInfoError || !userInfo) {
+            if (userInfoError) {
                 console.log(userInfoError);
-                alert('알 수 없는 에러가 발생하였습니다');
+                showAlert('알 수 없는 에러가 발생하였습니다');
                 return;
             }
-            setUser(userInfo);
+            showToast('로그인에 성공하였습니다');
+            setUser({
+                ...userInfo,
+                isLogin: true
+            });
             router.push('/');
         })();
     }, [authCode]);
