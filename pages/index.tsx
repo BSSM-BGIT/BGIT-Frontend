@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { HttpMethod, useAjax } from '../hooks/useAjax';
 import { useModal } from '../hooks/useModal';
 import { titleState } from '../store/common.store';
-import { User } from '../store/user.store';
+import { UserStateType } from '../store/user.store';
 
 const Home: NextPage = () => {
     const [, setTitle] = useRecoilState(titleState);
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     }, []);
 
     const test = async () => {
-        const [userInfo, userInfoError] = await ajax<User>({
+        const [userInfo, userInfoError] = await ajax<UserStateType>({
             method: HttpMethod.GET,
             url: 'user'
         });

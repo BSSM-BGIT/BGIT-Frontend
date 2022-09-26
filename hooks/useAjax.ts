@@ -96,6 +96,10 @@ export const useAjax = () => {
 
             if (err.response.data?.message) {
                 showAlert(err.response.data?.message);
+            } else if (err.response.data?.error) {
+                showAlert(err.response.data?.error);
+            } else {
+                showAlert(`HTTP ERROR ${err.response.status}`);
             }
             loading(false);
             return [, true];
