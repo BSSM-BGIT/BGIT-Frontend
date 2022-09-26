@@ -3,9 +3,5 @@ export interface UserType {
     studentGrade: number,
     studentClassNo: number,
     studentNo: number,
-    name: string,
-    githubId: null | string,
-    commits: number,
-    bio: null | string,
-    img: null | string
+    name: string
 }
