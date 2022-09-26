@@ -7,8 +7,8 @@
     padding-right: 2rem;
     background-color: var(--level-2);
     border-radius: 1.5rem;
-    box-shadow: var(--shadow);
 }
+
 
 .profile {
     display: flex;
@@ -37,8 +37,11 @@
 }
 
 .info {
+    min-width: 12rem;
+    text-align: center;
     padding: .5rem 2rem;
-    background-color: var(--background);
+    color: var(--text);
+    background: var(--background);
     border-radius: 5rem;
     font-weight: bold;
 }
@@ -71,19 +74,79 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: .3rem;
-    background-color: var(--level-1);
+    height: .5rem;
+    background-color: #00000088;
 }
 
 .exp_bar {
     z-index: 1;
     position: absolute;
     bottom: 0;
-    height: .3rem;
+    height: .5rem;
     background-color: var(--green);
     border-radius: 50rem;
 }
 
+.boj.item {
+    border: solid .1rem var(--shadow-color);
+    box-shadow: 0 0 3rem var(--shadow-brightness) var(--shadow-color);
+}
+
+.boj .info {
+    color: #222;
+    background: var(--tier-background);
+}
+
+.unrated {
+    box-shadow: none !important;
+    --tier-background: #222;
+}
+
+.unrated .info {
+    color: white !important;
+}
+
+.bronze {
+    --tier-background: conic-gradient(from .5turn at 70% 110%, #db6c00,  white) border-box;
+    --shadow-color: #db6c00;
+    --shadow-brightness: -2rem;
+}
+
+.silver {
+    --tier-background: conic-gradient(from .5turn at 70% 110%, #54789a,  white) border-box;
+    --shadow-color: #54789a;
+    --shadow-brightness: -1.25rem;
+}
+
+.gold {
+    --tier-background: conic-gradient(from .5turn at 70% 110%, #ffc300,  white) border-box;
+    --shadow-color: #ffc300;
+    --shadow-brightness: -1rem;
+}
+
+.platinum  {
+    --tier-background: conic-gradient(from .5turn at 70% 110%, #25d69b,  white) border-box;
+    --shadow-color: #25d69b;
+    --shadow-brightness: -.5rem;
+}
+
+.diamond  {
+    --tier-background: conic-gradient(from .5turn at 70% 110%, #00e4ff,  white) border-box;
+    --shadow-color: #00e4ff;
+    --shadow-brightness: -.5rem;
+}
+
+.ruby  {
+    --tier-background: conic-gradient(from .5turn at 70% 110%, #ff0068,  white) border-box;
+    --shadow-color: #ff0068;
+    --shadow-brightness: -.5rem;
+}
+
+.master  {
+    --tier-background: conic-gradient(from .5turn at 70% 110%, #9641d6,  white) border-box;
+    --shadow-color: #9641d6;
+    --shadow-brightness: 0rem;
+}
 
 @media screen and (min-width: 750px) {
     

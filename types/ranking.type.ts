@@ -20,7 +20,6 @@ export interface GitRankType {
 
 export interface BojRankType {
     bojId: string,
-    exp: number,
     rating: number,
     maxStreak: number,
     solvedCount: number,

@@ -27,7 +27,7 @@ export const RankItem = ({
     }, [info]);
 
     return (
-        <li className={styles.item}>
+        <li className={`${styles.item} ${tierInfo? styles.boj: ''} ${tierInfo? styles[tierInfo[1].name.split(' ')[0].toLocaleLowerCase()]: ''}`}>
             <div className={styles.profile}>
                 <Image src={'gitId' in info? info.githubImg: info.bojImg} width='50px' height='50px' alt="" />
                 <div className='cols gap-05'>
