@@ -13,7 +13,7 @@ export const Header = () => {
     const [mounted, setMounted] = useState(false);
     const { openModal } = useModal();
     const { ajax } = useAjax();
-    const { showToast, showAlert } = useOverlay();
+    const { showToast } = useOverlay();
     const [user] = useRecoilState(userState);
     const resetUser = useResetRecoilState(userState);
     const [sideBar, setSideBar] = useState(false);
@@ -39,14 +39,14 @@ export const Header = () => {
     const userMenuView = () => (
         mounted && (
             user.isLogin
-            ?<div className={`dropdown-menu ${styles.dropdown}`}>
+            ? <div className={`dropdown-menu ${styles.dropdown}`}>
                 <span className={styles.item}>{user.name}</span>
                 <ul className='dropdown-content'>
                     <li><a href='https://auth.bssm.kro.kr/user' className='option'>유저 정보</a></li>
                     <li><span onClick={() => {logout(); setSideBar(false);}} className='option'>로그아웃</span></li>
                 </ul>
             </div>
-            :(<span className={styles.item} onClick={() => {openModal('login'); setSideBar(false);}}>로그인</span>)
+            : (<span className={styles.item} onClick={() => {openModal('login'); setSideBar(false);}}>로그인</span>)
         )
     );
 
@@ -69,7 +69,7 @@ export const Header = () => {
                         {title}
                     </h2>
                     <ul className={styles.right}>
-                        <li><Link href='/ranking'><a className={styles.item}>랭킹</a></Link></li>
+                        <li><Link href='/ranking/git'><a className={styles.item}>랭킹</a></Link></li>
                         <li><Link href='/board'><a className={styles.item}>커뮤니티</a></Link></li>
                     </ul>
                 </nav>
