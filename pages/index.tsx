@@ -15,18 +15,10 @@ const Home: NextPage = () => {
         setTitle('');
     }, []);
 
-    const test = async () => {
-        const [userInfo, userInfoError] = await ajax<UserStateType>({
-            method: HttpMethod.GET,
-            url: 'user'
-        });
-        console.log(userInfo)
-    }
-
     return (
         <div>
             <button className='button accent' onClick={() => openModal('login')}>로그인</button>
-            <button className='button accent' onClick={test}>테스트</button>
+            <button className='button accent' onClick={() => openModal('git-auth')}>테스트</button>
         </div>
     )
 }
