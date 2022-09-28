@@ -162,7 +162,7 @@ const BojAuthBox = () => {
                 >
                     <p>
                         <span>해당 인증코드를 </span>
-                        <a className='accent-text' href={`https://solved.ac`}>Solved.ac</a>
+                        <a target='_blank' rel='noopener noreferrer' className='accent-text' href='https://solved.ac'>Solved.ac</a>
                         <span> 상태메시지에<br />입력후 인증해주세요.</span>
                     </p>
                     <h2>{authCode}</h2>

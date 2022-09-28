@@ -41,8 +41,8 @@ const RankingPage: NextPage = () => {
         }
 
         switch (rankingType) {
-            case RankingType.git: setTitle('깃허브 랭킹'); break;
-            case RankingType.boj: setTitle('백준 랭킹'); break;
+            case 'git': setTitle('깃허브 랭킹'); break;
+            case 'boj': setTitle('백준 랭킹'); break;
         }
         (async () => {
             const [rankingData, error] = await ajax<RankingRes>({

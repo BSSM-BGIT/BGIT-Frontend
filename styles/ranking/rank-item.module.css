@@ -73,6 +73,10 @@
     font-weight: bold;
 }
 
+.oneself {
+    color: var(--yellow);
+}
+
 .msg {
     overflow:hidden;
     text-overflow:ellipsis;

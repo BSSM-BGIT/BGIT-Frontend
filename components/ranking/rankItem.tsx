@@ -35,15 +35,11 @@ export const RankItem = ({
     return (
         <li className={`${styles.item} ${tierInfo? styles.boj: ''} ${tierInfo? styles[tierInfo[0].name.split(' ')[0].toLocaleLowerCase()]: ''}`}>
             <div className={styles.profile}>
-                <Image src={'gitId' in info? info.githubImg: profileSrc}  width='360px' height='360px' alt="" />
+                <Image src={'githubId' in info? info.githubImg: profileSrc}  width='360px' height='360px' alt="" />
                 <div className='cols gap-05'>
-                    <div>
+                    <div className='bold'>
                         <span className={styles.ranking}>[{ranking+1}] </span>
-                        {
-                            'gitId' in info
-                            ? <a className='bold' href={`https://github.com/${info.gitId}`}>{info.gitId}</a>
-                            : <a className='bold' href={`https://www.acmicpc.net/user/${info.bojId}`}>{info.bojId}</a>
-                        }
+                        <a target='_blank' rel='noopener noreferrer' href={'githubId' in info? `https://github.com/${info.githubId}`: `https://www.acmicpc.net/user/${info.bojId}`}>{'githubId' in info? info.githubId: info.bojId}</a>
                     </div>
                     <div className={styles.student_info}>
                         {user.studentGrade}학년 {user.studentClassNo}반 {user.studentNo}번 {user.name}
@@ -51,12 +47,13 @@ export const RankItem = ({
                 </div>
             </div>
             {
-                'gitId' in info
+                'githubId' in info
                 ? <>
-                    <div className={styles.msg}>{info.gitMsg}</div>
+                    <div className={styles.msg}>{info.githubMsg}</div>
                     <div className={styles.info}>{info.commits} commits</div>
                 </>
                 : tierInfo && <>
+                    <div className={styles.msg}>{info.bojBio}</div>
                     <div className={styles.info}>{tierInfo[0].name}</div>
                     <div className={styles.exp_bar_wrap}>
                         <div

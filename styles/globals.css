@@ -198,6 +198,18 @@ img{
     filter: brightness(1);
 }
 
+input:is(
+    ::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button
+) {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 label, summary{
     cursor: pointer;
 }

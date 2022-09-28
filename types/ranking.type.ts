@@ -11,9 +11,9 @@ export interface RankingRes {
 }
 
 export interface GitRankType {
-    gitId: string,
+    githubId: string,
     commits: number,
-    gitMsg: string,
+    githubMsg: string,
     githubImg: string,
     user: UserType
 }
@@ -24,6 +24,7 @@ export interface BojRankType {
     maxStreak: number,
     solvedCount: number,
     tier: number,
+    bojBio: string,
     bojImg: string,
     user: UserType
 }
