@@ -30,7 +30,7 @@ const LoginBox = () => {
 
     return (
         <Modal type="main" id="login" title={title}>
-            <a className={`button main ${styles.oauth_button} ${styles.bsm}`} href="https://bssm.kro.kr/oauth/login?clientId=4c81669f&redirectURI=http://localhost:3000/oauth/bsm">
+            <a className={`button main ${styles.oauth_button} ${styles.bsm}`} href="https://bssm.kro.kr/oauth/login?clientId=4c81669f&redirectURI=https://bgit.bssm.kro.kr/oauth/bsm">
                 <img src="/icons/bsm-icon.png" alt="bsm-icon"/>
                 <span>BSM 계정으로 계속</span>
             </a>

@@ -28,12 +28,17 @@
 .item {
     position: relative;
     display: flex;
+    gap: 2rem;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
     padding-right: 2rem;
     background-color: var(--level-2);
     border-radius: 1.5rem;
+}
+
+.item > *:not(.msg) {
+    flex: none;
 }
 
 .profile {
@@ -46,6 +51,12 @@
     width: 5rem !important;
     height: 5rem !important;
     border-radius: 50%;
+}
+
+.ranking {
+    color: var(--text-level-1);
+    font-weight: bold;
+    font-size: 1.3rem;
 }
 
 .student_info {
@@ -62,6 +73,13 @@
     font-weight: bold;
 }
 
+.msg {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color: var(--text-level-1);
+}
+
 .info {
     min-width: 12rem;
     text-align: center;
@@ -72,7 +90,7 @@
     font-weight: bold;
 }
 
-.ranking, .top_ranking {
+.ranking_list, .top_ranking_list {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -80,8 +98,12 @@
     text-align: left;
 }
 
-.top_ranking {
+.top_ranking_list {
     padding-bottom: 1rem;
+}
+
+.active {
+    background-color: var(--hover);
 }
 
 .exp_bar_wrap {
@@ -174,9 +196,15 @@
     --shadow-brightness: 0rem;
 }
 
+@media screen and (max-width: 750px) {
+    .msg {
+        display: none;
+    }
+}
+
 @media screen and (min-width: 750px) {
     
-    .top_ranking {
+    .top_ranking_list {
         display: flex;
         justify-content: center;
         flex-direction: row;
@@ -184,32 +212,32 @@
         padding: 0 .5rem 2rem;
     }
     
-    .top_ranking .item {
+    .top_ranking_list .item {
         flex: 1;
         padding: 2rem;
         flex-direction: column;
         gap: 1rem;
     }
     
-    .top_ranking .item:nth-child(1) {
+    .top_ranking_list .item:nth-child(1) {
         flex: 1.5;
         order: 2;
     }
     
-    .top_ranking .item:nth-child(2) {
+    .top_ranking_list .item:nth-child(2) {
         order: 1;
     }
     
-    .top_ranking .item:nth-child(3) {
+    .top_ranking_list .item:nth-child(3) {
         order: 3;
     }
     
-    .top_ranking .profile {
+    .top_ranking_list .profile {
         flex-direction: column;
         text-align: center;
     }
     
-    .top_ranking .profile img {
+    .top_ranking_list .profile img {
         width: 10rem !important;
         height: 10rem !important;
     }

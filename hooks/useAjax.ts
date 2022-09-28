@@ -5,7 +5,7 @@ import { useModal } from "./useModal";
 import { useOverlay } from "./useOverlay";
 
 const instance = axios.create({
-    baseURL: 'http://52.79.57.84:8080',
+    baseURL: '/api',
     headers: {
         Pragma: 'no-cache'
     },

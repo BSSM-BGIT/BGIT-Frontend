@@ -53,7 +53,7 @@ export const NumberInput = (props: NumberInputProps) => {
                 onBlur={() => applyValue()}
                 onKeyDown={e => e.key === 'Enter' && applyValue()}
             ></input>
-            <span>{msg}</span>
+            <span className={styles.msg}>{msg}</span>
             <span className={styles.placeholder}>{placeholder}</span>
         </div>
     );

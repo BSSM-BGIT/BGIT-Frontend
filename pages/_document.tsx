@@ -5,7 +5,10 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html>
-                <Head />
+                <Head>
+                    <meta property="title" content="BGIT" />
+                    <meta property="og:title" content="GitHub & BOJ Ranking Service" />
+                </Head>
                 <body className="dark">
                     <Main />
                     <NextScript />

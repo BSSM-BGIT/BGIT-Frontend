@@ -58,21 +58,25 @@ const RankingPage: NextPage = () => {
         <div className='container _100'>
             <ul className={rankStyles.page}>{
                 Object.entries(RankingType).map(
-                    type => <li><Link href={`/ranking/${type[0]}`}>{type[1]}</Link></li>
+                    type => (
+                        <li key={type[0]}>
+                            <Link href={`/ranking/${type[0]}`}><a className={type[0] === rankingType? rankStyles.active: ''}>{type[1]}</a></Link>
+                        </li>
+                    )
                 )
             }</ul>
             {
                 (typeof rankingType === 'string' && rankingType in RankingType) &&
                 <div>
-                    <ul className={rankStyles.top_ranking}>{
+                    <ul className={rankStyles.top_ranking_list}>{
                         rankingList &&
                         rankingList?.data.filter((_, i) => i <= 2)
-                        .map((info, i) => <RankItem info={info} key={i} />)
+                        .map((info, i) => <RankItem ranking={i} info={info} key={i} />)
                     }</ul>
-                    <ul className={rankStyles.ranking}>{
+                    <ul className={rankStyles.ranking_list}>{
                         rankingList &&
                         rankingList?.data.filter((_, i) => i >= 3)
-                        .map((info, i) => <RankItem info={info} key={i} />)
+                        .map((info, i) => <RankItem ranking={i+3} info={info} key={i+3} />)
                     }</ul>
                 </div>
             }

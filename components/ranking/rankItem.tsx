@@ -4,11 +4,13 @@ import styles from '../../styles/ranking/rank-item.module.css';
 import { BojRankType, BojTier, BojTierList, GitRankType } from '../../types/ranking.type';
 
 interface RankItemProps {
-    info: GitRankType | BojRankType
+    info: GitRankType | BojRankType,
+    ranking: number
 }
 
 export const RankItem = ({
     info,
+    ranking
 }: RankItemProps) => {
     const {user} = info;
     const [tierInfo, setTierInfo] = useState<[BojTier, BojTier]>();
@@ -33,13 +35,16 @@ export const RankItem = ({
     return (
         <li className={`${styles.item} ${tierInfo? styles.boj: ''} ${tierInfo? styles[tierInfo[0].name.split(' ')[0].toLocaleLowerCase()]: ''}`}>
             <div className={styles.profile}>
-                <Image src={'gitId' in info? info.githubImg: profileSrc}  width='50px' height='50px' alt="" />
+                <Image src={'gitId' in info? info.githubImg: profileSrc}  width='360px' height='360px' alt="" />
                 <div className='cols gap-05'>
-                    {
-                        'gitId' in info
-                        ? <a className='bold' href={`https://github.com/${info.gitId}`}>{info.gitId}</a>
-                        : <a className='bold' href={`https://www.acmicpc.net/user/${info.bojId}`}>{info.bojId}</a>
-                    }
+                    <div>
+                        <span className={styles.ranking}>[{ranking+1}] </span>
+                        {
+                            'gitId' in info
+                            ? <a className='bold' href={`https://github.com/${info.gitId}`}>{info.gitId}</a>
+                            : <a className='bold' href={`https://www.acmicpc.net/user/${info.bojId}`}>{info.bojId}</a>
+                        }
+                    </div>
                     <div className={styles.student_info}>
                         {user.studentGrade}학년 {user.studentClassNo}반 {user.studentNo}번 {user.name}
                     </div>
@@ -47,7 +52,10 @@ export const RankItem = ({
             </div>
             {
                 'gitId' in info
-                ? <div className={styles.info}>{info.commits} commits</div>
+                ? <>
+                    <div className={styles.msg}>{info.gitMsg}</div>
+                    <div className={styles.info}>{info.commits} commits</div>
+                </>
                 : tierInfo && <>
                     <div className={styles.info}>{tierInfo[0].name}</div>
                     <div className={styles.exp_bar_wrap}>

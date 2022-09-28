@@ -11,7 +11,7 @@ export interface UserType {
     studentClassNo: number,
     studentNo: number,
     name: string,
-    school: SchoolType,
+    school: SchoolType | null,
     bojAuth: boolean,
     githubAuth: boolean
 }

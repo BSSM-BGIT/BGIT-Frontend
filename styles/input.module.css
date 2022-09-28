@@ -39,6 +39,11 @@
     box-shadow: var(--shadow) inset;
 }
 
+.input_wrap .msg {
+    position: absolute;
+    right: 0;
+}
+
 .input_wrap .placeholder {
     position: absolute;
     left: 0;
