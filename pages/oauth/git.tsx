@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { HttpMethod, useAjax } from '../../hooks/useAjax';
 import { useOverlay } from '../../hooks/useOverlay';
-import { Token, tokenState, userState } from '../../store/user.store';
+import { Token, userState } from '../../store/user.store';
 import { UserType } from '../../types/user.type';
 
 const GitOAuth: NextPage = () => {

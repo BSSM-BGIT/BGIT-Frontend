@@ -1,8 +1,8 @@
 import { UserType } from "./user.type";
 
 export enum RankingType {
-    git = 'git',
-    boj = 'boj'
+    git = '깃허브',
+    boj = '백준'
 }
 
 export interface RankingRes {

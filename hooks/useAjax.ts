@@ -9,7 +9,7 @@ const instance = axios.create({
     headers: {
         Pragma: 'no-cache'
     },
-    timeout: 5000,
+    timeout: 30000
 });
 
 export enum HttpMethod {

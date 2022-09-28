@@ -23,13 +23,17 @@ export const RankItem = ({
                 BojTierList[idx-1] ?? BojTierList[0],
                 BojTierList[idx]]
             );
+            if (info.bojImg) setProfileSrc(info.bojImg);
+        } else {
+            setTierInfo(undefined);
         }
     }, [info]);
+    const [profileSrc, setProfileSrc] = useState<string>('https://static.solved.ac/misc/360x360/default_profile.png');
 
     return (
-        <li className={`${styles.item} ${tierInfo? styles.boj: ''} ${tierInfo? styles[tierInfo[1].name.split(' ')[0].toLocaleLowerCase()]: ''}`}>
+        <li className={`${styles.item} ${tierInfo? styles.boj: ''} ${tierInfo? styles[tierInfo[0].name.split(' ')[0].toLocaleLowerCase()]: ''}`}>
             <div className={styles.profile}>
-                <Image src={'gitId' in info? info.githubImg: info.bojImg} width='50px' height='50px' alt="" />
+                <Image src={'gitId' in info? info.githubImg: profileSrc}  width='50px' height='50px' alt="" />
                 <div className='cols gap-05'>
                     {
                         'gitId' in info
@@ -45,7 +49,7 @@ export const RankItem = ({
                 'gitId' in info
                 ? <div className={styles.info}>{info.commits} commits</div>
                 : tierInfo && <>
-                    <div className={styles.info}>{tierInfo[1].name}</div>
+                    <div className={styles.info}>{tierInfo[0].name}</div>
                     <div className={styles.exp_bar_wrap}>
                         <div
                             className={styles.exp_bar}
