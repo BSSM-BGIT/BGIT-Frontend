@@ -5,7 +5,7 @@ import ModalDim from '../components/common/modalDim'
 import LoadingDim from '../components/common/overlay/loadingDim'
 import Toast from '../components/common/overlay/toast'
 import Alert from '../components/common/overlay/alert'
-import { LoginBox } from '../components/common/accountPopup'
+import { AccountBoxWrap } from '../components/common/accountPopup'
 import { SettingBox } from '../components/common/settingPopup'
 import { Header } from '../components/common/header'
 
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <Component {...pageProps} />
                 <>
                     <Header />
-                    <LoginBox />
+                    <AccountBoxWrap />
                     <SettingBox />
                     <Toast />
                     <Alert />

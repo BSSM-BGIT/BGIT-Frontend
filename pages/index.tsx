@@ -1,33 +1,36 @@
 import type { NextPage } from 'next'
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { HttpMethod, useAjax } from '../hooks/useAjax';
 import { useModal } from '../hooks/useModal';
 import { titleState } from '../store/common.store';
-import { UserStateType } from '../store/user.store';
+import { userState } from '../store/user.store';
 
 const Home: NextPage = () => {
     const [, setTitle] = useRecoilState(titleState);
     const {openModal} = useModal();
-    const {ajax} = useAjax();
+    const [user] = useRecoilState(userState);
+    const router = useRouter();
 
     useEffect(() => {
         setTitle('');
     }, []);
 
-    const test = async () => {
-        const [userInfo, userInfoError] = await ajax<UserStateType>({
-            method: HttpMethod.GET,
-            url: 'user'
-        });
-        console.log(userInfo)
-    }
+    useEffect(() => {
+        if (!user.isLogin) {
+            openModal('login');
+            return;
+        }
+        if (!user.bojAuth || !user.githubAuth) {
+            openModal('ranking-auth');
+            return;
+        }
+        router.push('/ranking/git');
+    }, [user]);
+    
 
     return (
-        <div>
-            <button className='button accent' onClick={() => openModal('login')}>로그인</button>
-            <button className='button accent' onClick={test}>테스트</button>
-        </div>
+        <></>
     )
 }
 

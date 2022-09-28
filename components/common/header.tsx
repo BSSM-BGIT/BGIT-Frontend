@@ -79,7 +79,7 @@ export const Header = () => {
                 <div className={`dim ${styles.dim}`} onClick={() => setSideBar(false)}></div>
                 <ul className={styles.menus}>
                     <li>{userMenuView()}</li>
-                    <li><Link href='/ranking'><a className={styles.item}>랭킹</a></Link></li>
+                    <li><Link href='/ranking/git'><a className={styles.item}>랭킹</a></Link></li>
                     <li><Link href='/board'><a className={styles.item}>커뮤니티</a></Link></li>
                     <li><a className={styles.item} href='https://github.com/BSSM-BGIT'>깃허브</a></li>
                 </ul>
