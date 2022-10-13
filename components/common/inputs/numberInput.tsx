@@ -21,7 +21,6 @@ export const NumberInput = (props: NumberInputProps) => {
         type = 'number',
         min,
         max,
-        msg,
         className = '',
         immediately,
         full
@@ -53,7 +52,6 @@ export const NumberInput = (props: NumberInputProps) => {
                 onBlur={() => applyValue()}
                 onKeyDown={e => e.key === 'Enter' && applyValue()}
             ></input>
-            <span className={styles.msg}>{msg}</span>
             <span className={styles.placeholder}>{placeholder}</span>
         </div>
     );

@@ -47,13 +47,15 @@ export const SettingBox = () => {
                         </li>
                         <li className='picker'>
                             <span>배율</span>
-                            <NumberInput
-                                setCallback={setScreenScale}
-                                initial={screenScale}
-                                min={50}
-                                max={500}
-                                msg='%'
-                            />
+                            <div className="rows">
+                                <NumberInput
+                                    setCallback={setScreenScale}
+                                    initial={screenScale}
+                                    min={50}
+                                    max={500}
+                                />
+                                <span>%</span>
+                            </div>
                         </li>
                     </ul>
                 </li>

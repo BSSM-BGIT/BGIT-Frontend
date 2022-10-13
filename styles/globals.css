@@ -198,10 +198,8 @@ img{
     filter: brightness(1);
 }
 
-input:is(
-    ::-webkit-outer-spin-button,
-    ::-webkit-inner-spin-button
-) {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }

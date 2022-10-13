@@ -11,10 +11,11 @@ import { useOverlay } from '../../hooks/useOverlay';
 import { userState } from '../../store/user.store';
 import { useModal } from '../../hooks/useModal';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const RankingPage: NextPage = () => {
     const [user] = useRecoilState(userState);
-    const [, setTitle] = useRecoilState(titleState);
+    const [title, setTitle] = useRecoilState(titleState);
     const {ajax} = useAjax();
     const {openModal} = useModal();
     const {showAlert} = useOverlay();
@@ -56,6 +57,9 @@ const RankingPage: NextPage = () => {
 
     return (
         <div className='container _100'>
+            <Head>
+                <title>{title || '랭킹'}</title>
+            </Head>
             <ul className={rankStyles.page}>{
                 Object.entries(RankingType).map(
                     type => (

@@ -78,10 +78,15 @@
 }
 
 .msg {
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
+    text-align: center;
+    width: 100%;
+    word-break: break-all;
     color: var(--text-level-1);
+}
+
+.top_ranking_list .msg {
+    overflow-y: auto;
+    height: 4rem;
 }
 
 .info {
