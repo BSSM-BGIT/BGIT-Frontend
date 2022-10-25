@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { HttpMethod, useAjax } from '../../hooks/useAjax';
 import { useOverlay } from '../../hooks/useOverlay';
-import { Token, tokenState, userState } from '../../store/user.store';
+import { TokenRes, tokenState, userState } from '../../store/user.store';
 import { UserType } from '../../types/user.type';
 
 const BsmOAuth: NextPage = () => {
@@ -18,7 +18,7 @@ const BsmOAuth: NextPage = () => {
     useEffect(() => {
         if (!authCode) return;
         (async () => {
-            const [token, tokenError] = await ajax<Token>({
+            const [tokenRes, tokenError] = await ajax<TokenRes>({
                 method: HttpMethod.POST,
                 url: 'auth/oauth/bsm',
                 headers: {
@@ -31,13 +31,16 @@ const BsmOAuth: NextPage = () => {
                 showAlert('알 수 없는 에러가 발생하였습니다');
                 return;
             }
-            setToken(token);
+            setToken({
+                accessToken: tokenRes.accessToken.value,
+                refreshToken: tokenRes.refreshToken.value
+            });
 
             const [userInfo, userInfoError] = await ajax<UserType>({
                 method: HttpMethod.GET,
                 url: 'user',
                 headers: {
-                    'ACCESS-TOKEN': token.accessToken
+                    'ACCESS-TOKEN': tokenRes.accessToken.value
                 },
                 noToken: true
             });

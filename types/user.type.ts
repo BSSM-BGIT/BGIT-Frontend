@@ -6,6 +6,7 @@ enum SchoolType {
 }
 
 export interface UserType {
+    userId: number,
     email: string,
     studentGrade: number,
     studentClassNo: number,

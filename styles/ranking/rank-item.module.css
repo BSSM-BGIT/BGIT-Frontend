@@ -47,10 +47,54 @@
     gap: 1rem;
 }
 
-.profile img {
+.profile_picture {
+    height: 5rem;
+}
+
+.profile_picture img {
     width: 5rem !important;
     height: 5rem !important;
     border-radius: 50%;
+}
+
+
+.user_menu :global(.select) {
+    letter-spacing: -.3rem;
+    padding: 0 .5rem;
+    background-color: var(--level-1);
+}
+
+.user_menu :global(.select)::after {
+    content: none;
+}
+
+.user_menu :global(.dropdown-content) {
+    z-index: 2;
+}
+
+.user_menu :global(.dropdown-content) :global(.option) {
+    width: 16rem;
+}
+
+.user_info {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    gap: .5rem;
+}
+
+.report_user {
+    display: flex;
+    gap: .5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.report_user img {
+    width: 1.5rem;
+    height: 1.5rem;
+    filter: var(--bright);
 }
 
 .ranking {
@@ -245,8 +289,12 @@
         flex-direction: column;
         text-align: center;
     }
+
+    .top_ranking_list .profile_picture {
+        height: 10rem;
+    }
     
-    .top_ranking_list .profile img {
+    .top_ranking_list .profile_picture img {
         width: 10rem !important;
         height: 10rem !important;
     }

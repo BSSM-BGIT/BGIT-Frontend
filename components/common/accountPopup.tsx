@@ -19,24 +19,14 @@ export const AccountBoxWrap = () => {
     );
 }
 
-const LoginBox = () => {
-    const title = (
-        <>
-            <img src="/logo/logo.png" alt="logo" className="logo" />
-            <br/>
-            <span>로그인</span>
-        </>
-    );
-
-    return (
-        <Modal type="main" id="login" title={title}>
-            <a className={`button main ${styles.oauth_button} ${styles.bsm}`} href="https://bssm.kro.kr/oauth/login?clientId=4c81669f&redirectURI=https://bgit.bssm.kro.kr/oauth/bsm">
-                <img src="/icons/bsm-icon.png" alt="bsm-icon"/>
-                <span>BSM 계정으로 계속</span>
-            </a>
-        </Modal>
-    );
-}
+const LoginBox = () => (
+    <Modal type="main" id="login" title='로그인'>
+        <a className={`button main ${styles.oauth_button} ${styles.bsm}`} href="https://auth.bssm.kro.kr/oauth?clientId=4c81669f&redirectURI=https://bgit.bssm.kro.kr/oauth/bsm">
+            <img src="/icons/bsm-icon.png" alt="bsm-icon"/>
+            <span>BSM 계정으로 계속</span>
+        </a>
+    </Modal>
+);
 
 const RankingAuthBox = () => {
     const {openModal} = useModal();

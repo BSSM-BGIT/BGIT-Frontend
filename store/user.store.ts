@@ -9,6 +9,7 @@ export interface UserStateType extends UserType {
 export const userState = atom<UserStateType>({
     key: 'user',
     default: {
+        userId: 0,
         isLogin: false,
         email: '',
         studentGrade: 0,
@@ -25,6 +26,15 @@ export const userState = atom<UserStateType>({
 export interface Token {
     accessToken: string | null,
     refreshToken: string | null
+}
+
+export interface TokenRes {
+    accessToken: {
+        value: string
+    },
+    refreshToken: {
+        value: string
+    }
 }
 
 export const tokenState = atom<Token>({

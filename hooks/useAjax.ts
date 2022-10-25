@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosPromise } from "axios";
 import { useRecoilState, useResetRecoilState } from "recoil";
-import { Token, tokenState, userState } from "../store/user.store";
+import { Token, TokenRes, tokenState, userState } from "../store/user.store";
 import { useModal } from "./useModal";
 import { useOverlay } from "./useOverlay";
 
@@ -69,7 +69,7 @@ export const useAjax = () => {
                     loginAlert();
                     return [, err];
                 }
-                const [newToken, newTokenError] = await ajax<Token>({
+                const [newToken, newTokenError] = await ajax<TokenRes>({
                     method: HttpMethod.PUT,
                     url: 'refresh',
                     headers: {
@@ -83,13 +83,13 @@ export const useAjax = () => {
                 }
                 setToken(prev => ({
                     ...prev,
-                    accessToken: newToken.accessToken
+                    accessToken: newToken.accessToken.value
                 }));
                 return ajax({
                     url,
                     method,
                     payload,
-                    headers: {...headers, 'ACCESS-TOKEN': newToken.accessToken},
+                    headers: {...headers, 'ACCESS-TOKEN': newToken.accessToken.value},
                     noToken: true
                 });
             }
