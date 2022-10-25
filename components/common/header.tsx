@@ -5,17 +5,17 @@ import { useRecoilState, useResetRecoilState } from 'recoil';
 import { HttpMethod, useAjax } from '../../hooks/useAjax';
 import { useModal } from '../../hooks/useModal';
 import { useOverlay } from '../../hooks/useOverlay';
-import { userState } from '../../store/user.store';
+import { tokenState, userState } from '../../store/user.store';
 import { titleState } from '../../store/common.store';
 import styles from '../../styles/header.module.css';
 
 export const Header = () => {
     const [mounted, setMounted] = useState(false);
     const { openModal } = useModal();
-    const { ajax } = useAjax();
     const { showToast } = useOverlay();
     const [user] = useRecoilState(userState);
     const resetUser = useResetRecoilState(userState);
+    const [, setToken] = useRecoilState(tokenState);
     const [sideBar, setSideBar] = useState(false);
     const [title] = useRecoilState(titleState);
 
@@ -25,15 +25,13 @@ export const Header = () => {
         return () => setMounted(false);
     }, []);
 
-    const logout = async () => {
-        const [, error] = await ajax({
-            method: HttpMethod.DELETE,
-            url: 'logout'
+    const logout = () => {
+        resetUser();
+        setToken({
+            accessToken: null,
+            refreshToken: null
         });
-        if (!error) {
-            resetUser();
-            showToast('로그아웃 되었습니다');
-        }
+        showToast('로그아웃 되었습니다');
     }
 
     const userMenuView = () => (

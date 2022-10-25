@@ -14,5 +14,6 @@ export interface UserType {
     name: string,
     school: SchoolType | null,
     bojAuth: boolean,
-    githubAuth: boolean
+    githubAuth: boolean,
+    imaginaryNumber: boolean
 }

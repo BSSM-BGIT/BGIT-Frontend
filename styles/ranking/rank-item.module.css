@@ -134,13 +134,30 @@
 }
 
 .info {
+    position: relative;
     min-width: 12rem;
     text-align: center;
     padding: .5rem 2rem;
     color: var(--text);
     background: var(--background);
     border-radius: 5rem;
+    overflow: hidden;
     font-weight: bold;
+}
+
+.cheating {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    white-space: nowrap;
+    font-weight: bold;
+    backdrop-filter: blur(5px);
 }
 
 .ranking_list, .top_ranking_list {

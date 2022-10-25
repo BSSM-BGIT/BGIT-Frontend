@@ -18,7 +18,8 @@ export const userState = atom<UserStateType>({
         name: '',
         school: null,
         bojAuth: false,
-        githubAuth: false
+        githubAuth: false,
+        imaginaryNumber: false
     },
     effects: [localStorageEffect('user', 'json')]
 });

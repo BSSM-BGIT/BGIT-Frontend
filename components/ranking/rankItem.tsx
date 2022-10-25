@@ -50,7 +50,7 @@ export const RankItem = ({
 
     const reportUser = async () => {
         const [, error] = await ajax({
-            url: `voting/${info.user.userId}`,
+            url: `report/${info.user.userId}`,
             method: HttpMethod.POST,
         });
         if (error) return;
@@ -67,7 +67,7 @@ export const RankItem = ({
                     <div className={styles.user_info}>
                         <span className={styles.ranking}>[{ranking+1}] </span>
                         <a target='_blank' rel='noopener noreferrer' href={'githubId' in info? `https://github.com/${info.githubId}`: `https://www.acmicpc.net/user/${info.bojId}`}>{'githubId' in info? info.githubId: info.bojId}</a>
-                        {'githubId' in info && userMenu()}
+                        {'githubId' in info && (userMenu())}
                     </div>
                     <div className={styles.student_info}>
                         {user.studentGrade}학년 {user.studentClassNo}반 {user.studentNo}번 {user.name}
@@ -78,7 +78,12 @@ export const RankItem = ({
                 'githubId' in info
                 ? <>
                     <div className={styles.msg}>{info.githubMsg}</div>
-                    <div className={styles.info}>{info.commits} commits</div>
+                    <div className={styles.info}>
+                        {info.commits} commits
+                        {info.user.imaginaryNumber && (
+                            <div className={styles.cheating}>커밋기록 조작 의심</div>
+                        )}
+                    </div>
                 </>
                 : tierInfo && <>
                     <div className={styles.msg}>{info.bojBio}</div>
