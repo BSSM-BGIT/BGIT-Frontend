@@ -172,6 +172,11 @@
     padding-bottom: 1rem;
 }
 
+
+.top_ranking_list .user_info {
+  justify-content: center;
+}
+
 .active {
     background-color: var(--hover);
 }

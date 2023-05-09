@@ -41,7 +41,7 @@ export const useAjax = () => {
         noToken
     }: Ajax):Promise<[T, false] | [void, AxiosError | true]> => {
         loading(true);
-        if (!noToken) {
+        if (token.accessToken && !noToken) {
             headers['ACCESS-TOKEN'] = token.accessToken;
         }
     

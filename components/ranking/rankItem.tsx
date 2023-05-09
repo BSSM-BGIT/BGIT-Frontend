@@ -25,7 +25,7 @@ export const RankItem = ({
             let idx = 0;
             BojTierList.some((tier, i) => {
                 idx = i;
-                return tier.rating >= info.rating;
+                return tier.rating > info.rating;
             });
             setTierInfo([
                 BojTierList[idx-1] ?? BojTierList[0],

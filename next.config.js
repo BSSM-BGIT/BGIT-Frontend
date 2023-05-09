@@ -9,7 +9,7 @@ const nextConfig = {
         return [
             {
                 source: '/api/:path*',
-                destination: 'http://52.78.155.216:8080/:path*'
+                destination: 'https://bgit.bssm.kro.kr/api/:path*'
             }
         ]
     }
