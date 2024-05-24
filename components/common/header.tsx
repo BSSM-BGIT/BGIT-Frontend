@@ -40,7 +40,7 @@ export const Header = () => {
             ? <div className={`dropdown-menu ${styles.dropdown}`}>
                 <span className={styles.item}>{user.name}</span>
                 <ul className='dropdown-content'>
-                    <li><a href='https://auth.bssm.kro.kr/user' className='option'>유저 정보</a></li>
+                    <li><a href='https://auth.bssm.app/user' className='option'>유저 정보</a></li>
                     <li><span onClick={() => {logout(); setSideBar(false);}} className='option'>로그아웃</span></li>
                 </ul>
             </div>

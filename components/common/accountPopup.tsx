@@ -21,7 +21,7 @@ export const AccountBoxWrap = () => {
 
 const LoginBox = () => (
     <Modal type="main" id="login" title='로그인'>
-        <a className={`button main ${styles.oauth_button} ${styles.bsm}`} href="https://auth.bssm.kro.kr/oauth?clientId=4c81669f&redirectURI=https://bgit.bssm.kro.kr/oauth/bsm">
+        <a className={`button main ${styles.oauth_button} ${styles.bsm}`} href="https://auth.bssm.app/oauth?clientId=4c81669f&redirectURI=https://bgit.bssm.app/oauth/bsm">
             <img src="/icons/bsm-icon.png" alt="bsm-icon"/>
             <span>BSM 계정으로 계속</span>
         </a>
